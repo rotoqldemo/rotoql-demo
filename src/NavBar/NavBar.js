@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
-import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
+import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import './NavBar.css';
 
@@ -31,5 +32,10 @@ class NavBar extends Component {
     );
   }
 }
+
+NavBar.propTypes = {
+  title: PropTypes.string.isRequired,
+  logo: PropTypes.string.isRequired
+};
 
 export default NavBar

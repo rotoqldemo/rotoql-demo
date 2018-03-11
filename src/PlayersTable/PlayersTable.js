@@ -7,6 +7,12 @@ const unavailableImage = 'https://www.jainsusa.com/images/store/landscape/not-av
 
 /**
  * A table that renders a list of players.
+ *
+ * For the demo it's just a boring static table, without
+ * any actions. The API seems to expose fun things like
+ * jersey numbers, nick-names, real team, college, etc.,
+ * which would make for a nice display, but these values
+ * don't look populated at the moment.
  */
 class PlayersTable extends Component {
   render() {
@@ -39,9 +45,8 @@ class PlayersTable extends Component {
   }
 }
 
-// SimpleTable.propTypes = {
-  // classes: PropTypes.object.isRequired,
-  // players: PropTypes.array.isRequired,
-// };
+PlayersTable.propTypes = {
+  players: PropTypes.array.isRequired
+};
 
 export default PlayersTable

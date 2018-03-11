@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import NavBar from '../NavBar/NavBar';
 import PlayersTable from '../PlayersTable/PlayersTable';
 import { fetchTeam, fetchPlayers } from '../api';
@@ -32,12 +33,16 @@ class TeamPage extends Component {
   componentDidMount() {
     // fetch the players on the team
     fetchPlayers(this.props.teamId)
-      .then(players => this.setState({ players }))
+      .then(players => this.setState({ players }));
 
     // fetch the team's details
     fetchTeam(this.props.teamId)
-      .then(team => this.setState({ team }))
+      .then(team => this.setState({ team }));
   }
 }
+
+TeamPage.propTypes = {
+  teamId: PropTypes.string.isRequired
+};
 
 export default TeamPage;
