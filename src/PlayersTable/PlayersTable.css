@@ -1,0 +1,9 @@
+.players-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.headshot {
+  height: 40px;
+  border-radius: 50%;
+}
