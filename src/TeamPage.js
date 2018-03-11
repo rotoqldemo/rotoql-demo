@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Grid from 'material-ui/Grid';
+import NavBar from './NavBar';
+
 import PlayersTable from './PlayersTable';
 
 /**
@@ -9,8 +12,10 @@ class TeamPage extends Component {
   render() {
     return (
       <div>
-        <h1>The team's name</h1>
-        <PlayersTable />
+        <NavBar />
+        <Grid container spacing={44}>
+          <PlayersTable />
+        </Grid>
       </div>
     );
   }
