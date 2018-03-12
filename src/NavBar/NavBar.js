@@ -14,6 +14,9 @@ import './NavBar.css';
  * authentication, etc.
  */
 class NavBar extends Component {
+  /**
+   * Render the component.
+   */
   render() {
     return (
       <div>

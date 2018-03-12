@@ -5,9 +5,14 @@ import PlayersTable from '../PlayersTable/PlayersTable';
 import { fetchTeam, fetchPlayers } from '../api';
 
 /**
- * A super minimal view of a player's fantasay team.
+ * A view of a player's fantasay team.
  */
 class TeamPage extends Component {
+  /**
+   * Create a new TeamPage component.
+   *
+   *@param {Object} props
+   */
   constructor(props) {
     super(props);
 
@@ -21,15 +26,21 @@ class TeamPage extends Component {
     };
   }
 
+  /**
+   * Render the component.
+   */
   render() {
     return (
       <div>
         <NavBar logo={this.state.team.logo} title={this.state.team.name} />
-        <PlayersTable players={this.state.players}/>
+        <PlayersTable players={this.state.players} />
       </div>
     );
   }
 
+  /**
+   * Fetch data when the component has been mounted.
+   */
   componentDidMount() {
     // fetch the players on the team
     fetchPlayers(this.props.teamId)

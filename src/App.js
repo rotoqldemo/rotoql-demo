@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import TeamPage from './TeamPage/TeamPage';
-
 import './App.css';
 
 const theme = createMuiTheme({
@@ -13,6 +12,9 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
+  /**
+   * Render the component.
+   */
   render() {
     // For our demo, we don't have any routing set up, so
     // we'll simply hardcode a specific team's Id so

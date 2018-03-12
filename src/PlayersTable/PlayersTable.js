@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import './PlayersTable.css';
 
-const unavailableImage = 'https://www.jainsusa.com/images/store/landscape/not-available.jpg';
+const UNAVAILABLE_IMAGE = 'https://www.jainsusa.com/images/store/landscape/not-available.jpg';
 
 /**
  * A table that renders a list of players.
@@ -15,6 +15,11 @@ const unavailableImage = 'https://www.jainsusa.com/images/store/landscape/not-av
  * don't look populated at the moment.
  */
 class PlayersTable extends Component {
+  /**
+   * Create a new PlayersTable component.
+   *
+   *@param {Object} props
+   */
   constructor(props) {
     super(props);
 
@@ -39,7 +44,7 @@ class PlayersTable extends Component {
    * boolean, either the player is starting or he is isn't.
    */
   compareByStatus(player1, player2) {
-    return player1.isStarting ? -1 : 1;
+    return player1.isStarting === player2.isStarting ? 0 : player1.isStarting ? -1 : 1;
   }
 
   /**
@@ -58,13 +63,13 @@ class PlayersTable extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.state.players.map(n => {
+            {this.state.players.map(player => {
               return (
-                <TableRow key={n.id}>
-                  <TableCell><img src={n.realPlayer.imageUrl || unavailableImage} className="headshot" alt=''/></TableCell>
-                  <TableCell>{n.realPlayer.fullName}</TableCell>
-                  <TableCell className="uppercase">{n.eligiblePositions.join(', ')}</TableCell>
-                  <TableCell>{n.isStarting ? 'Starting' : 'Benched'}</TableCell>
+                <TableRow key={player.id}>
+                  <TableCell><img src={player.realPlayer.imageUrl || UNAVAILABLE_IMAGE} className="headshot" alt=''/></TableCell>
+                  <TableCell>{player.realPlayer.fullName}</TableCell>
+                  <TableCell className="uppercase">{player.eligiblePositions.join(', ')}</TableCell>
+                  <TableCell>{player.isStarting ? 'Starting' : 'Benched'}</TableCell>
                 </TableRow>
               );
             })}
@@ -79,4 +84,4 @@ PlayersTable.propTypes = {
   players: PropTypes.array.isRequired
 };
 
-export default PlayersTable
+export default PlayersTable;
