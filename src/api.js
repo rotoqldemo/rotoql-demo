@@ -1,5 +1,5 @@
-const URL = 'https://api-qa.squadql.com/graphql?';
-const TOKEN = "f1432e0d-557d-466f-877c-8fc6631e7594 1209600.DYMwsQ.H7GDNVW3KLgA7XCrP6y18v1Fl20";
+const URL = process.env.REACT_APP_API_HOST;
+const TOKEN = process.env.REACT_APP_API_TOKEN;
 
 /**
  * Fetch players on a fantasty team.
