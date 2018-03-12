@@ -15,6 +15,36 @@ const unavailableImage = 'https://www.jainsusa.com/images/store/landscape/not-av
  * don't look populated at the moment.
  */
 class PlayersTable extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      players: []
+    }
+  }
+
+  /**
+   * To keep to the rule of immutable props, we create
+   * a new players array before modifiying it.
+   */
+  componentWillReceiveProps(props) {
+    this.setState({
+      players: props.players.slice()
+        .sort((player1, player2) => this.compareByStatus(player1, player2))
+    });
+  }
+
+  /**
+   * Compare two players by their status. The current status is
+   * boolean, either the player is starting or he is isn't.
+   */
+  compareByStatus(player1, player2) {
+    return player1.isStarting ? -1 : 1;
+  }
+
+  /**
+   * Render the component.
+   */
   render() {
     return (
       <div className="players-table">
@@ -28,7 +58,7 @@ class PlayersTable extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.players.map(n => {
+            {this.state.players.map(n => {
               return (
                 <TableRow key={n.id}>
                   <TableCell><img src={n.realPlayer.imageUrl || unavailableImage} className="headshot" alt=''/></TableCell>
